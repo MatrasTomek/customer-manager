@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { Customer, CustomerType } from "../model";
 import { CustomerDetailsComponent } from "../customer-details/customer-details.component";
+import { CustomerService } from "../customer.service";
 
 @Component({
   selector: "app-customer-browser",
@@ -10,53 +11,15 @@ import { CustomerDetailsComponent } from "../customer-details/customer-details.c
 export class CustomerBrowserComponent implements OnInit {
   @ViewChild("details") detailsComponent: CustomerDetailsComponent | undefined;
 
-  customers: Customer[] = [
-    {
-      name: "PPHU Jan Kowalski",
-      photoUrl: "assets/images/cat.jpg",
-      description: "important client",
-      age: 45,
-      adress: {
-        street: "Pomarańczowa",
-        houseNumber: 124,
-        city: "Tłuszcz",
-      },
-      type: CustomerType.Premium,
-      categories: ["zagraniczny", "mikro", "duży"],
-    },
-    {
-      name: "Anna Piwo",
-      photoUrl: "assets/images/cat_1.jpg",
-      description: "standard client",
-      age: 38,
-      adress: {
-        street: "Ogniowa",
-        houseNumber: 14,
-        city: "Wrocław",
-      },
-      type: CustomerType.Standard,
-      categories: ["osoba prywatna"],
-    },
-    {
-      name: "ND Tomasz Matras",
-      photoUrl: "assets/images/cat_2.jpg",
-      description: "standard client",
-      age: 38,
-      adress: {
-        street: "Trakt Królewski",
-        houseNumber: 118,
-        city: "Mokrzyska",
-      },
-      type: CustomerType.Standard,
-      categories: ["mikro", "zagraniczny"],
-    },
-  ];
+  customers!: Customer[];
+  customer!: Customer;
 
-  customer: Customer = this.customers[0];
+  constructor(private customerService: CustomerService) {}
 
-  constructor() {}
-
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.customers = this.customerService.getCustomers();
+    this.customer = this.customers[0];
+  }
 
   changeColor() {
     this.detailsComponent?.changeColor();
