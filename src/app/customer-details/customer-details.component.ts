@@ -9,6 +9,7 @@ import {
   SimpleChanges,
 } from "@angular/core";
 import { Customer, CustomerType } from "../model";
+import { MessageService } from "../message.service";
 
 @Component({
   selector: "app-customer-details",
@@ -27,7 +28,7 @@ export class CustomerDetailsComponent implements OnInit, OnDestroy, OnChanges {
 
   CustomerType = CustomerType;
 
-  constructor() {}
+  constructor(private messageService: MessageService) {}
   ngOnChanges(changes: SimpleChanges): void {
     console.log("change");
   }
@@ -46,6 +47,7 @@ export class CustomerDetailsComponent implements OnInit, OnDestroy, OnChanges {
   }
   changeColor() {
     this.nameColor = this.nameColor === "blue" ? "red" : "blue";
+    this.messageService.success("udało się zmienić kolor");
   }
 
   left() {

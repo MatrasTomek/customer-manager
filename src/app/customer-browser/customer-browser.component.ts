@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild } from "@angular/core";
 import { Customer, CustomerType } from "../model";
 import { CustomerDetailsComponent } from "../customer-details/customer-details.component";
 import { CustomerService } from "../customer.service";
+import { Observable } from "rxjs";
+import { MessageService } from "../message.service";
 
 @Component({
   selector: "app-customer-browser",
@@ -14,11 +16,13 @@ export class CustomerBrowserComponent implements OnInit {
   customers!: Customer[];
   customer!: Customer;
 
-  constructor(private customerService: CustomerService) {}
+  constructor(
+    private messageService: MessageService,
+    private customerService: CustomerService
+  ) {}
 
   ngOnInit(): void {
-    this.customers = this.customerService.getCustomers();
-    this.customer = this.customers[0];
+    this.refresh();
   }
 
   changeColor() {
@@ -32,5 +36,19 @@ export class CustomerBrowserComponent implements OnInit {
     } else if (direction === "right" && index < this.customers.length - 1) {
       this.customer = this.customers[index + 1];
     }
+  }
+
+  deleteCustomer() {
+    this.customerService.deleteCustomer(this.customer).subscribe(() => {
+      this.messageService.success("Klient usunięty");
+      this.refresh();
+    });
+  }
+
+  private refresh() {
+    this.customerService.getCustomers().subscribe((response) => {
+      this.customers = response;
+      this.customer = this.customers[0];
+    });
   }
 }
