@@ -24,7 +24,7 @@
         </p>
         <ul>
           <li *ngFor="let category of customer?.categories">
-            {{ category }}
+            {{ category | capitalize }}
           </li>
         </ul>
         <button

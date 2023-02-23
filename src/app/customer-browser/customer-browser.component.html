@@ -7,6 +7,9 @@
       </option>
     </select>
     <button class="btn btn-default" (click)="changeColor()">Zmień kolor</button>
+    <button class="btn btn-danger" (click)="deleteCustomer()">
+      Usuń klienta
+    </button>
   </div>
   <div *ngIf="customer">
     <app-customer-details
