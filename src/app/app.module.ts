@@ -14,7 +14,8 @@ import { MessageService } from "./message.service";
 import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 import { CustomerAddComponent } from "./customer-add/customer-add.component";
 import { ErrorHandlingInterceptor } from "./error-handling.interceptor";
-import { CapitalizePipe } from './capitalize.pipe';
+import { CapitalizePipe } from "./capitalize.pipe";
+import { ContractsModule } from "./contracts/contracts.module";
 
 const config: Config = {
   customerLimit: 10,
@@ -37,6 +38,7 @@ const config: Config = {
     FormsModule,
     HttpClientModule,
     ToastrModule.forRoot(),
+    ContractsModule,
   ],
   providers: [
     CustomerService,
