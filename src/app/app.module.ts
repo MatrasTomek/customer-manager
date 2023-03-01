@@ -4,18 +4,14 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { FormsModule } from "@angular/forms";
-import { HighlightDirective } from "./highlight.directive";
-import { CustomerBrowserComponent } from "./customer-browser/customer-browser.component";
-import { CustomerDetailsComponent } from "./customer-details/customer-details.component";
-import { CustomerService } from "./customer.service";
+import { CustomerService } from "./customers/customer.service";
 import { CONFIG, Config } from "./model";
 import { ToastrModule } from "ngx-toastr";
 import { MessageService } from "./message.service";
 import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
-import { CustomerAddComponent } from "./customer-add/customer-add.component";
 import { ErrorHandlingInterceptor } from "./error-handling.interceptor";
-import { CapitalizePipe } from "./capitalize.pipe";
 import { ContractsModule } from "./contracts/contracts.module";
+import { CustomersModule } from "./customers/customers.module";
 
 const config: Config = {
   customerLimit: 10,
@@ -23,23 +19,7 @@ const config: Config = {
 };
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HighlightDirective,
-    CustomerBrowserComponent,
-    CustomerDetailsComponent,
-    CustomerAddComponent,
-    CapitalizePipe,
-  ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    AppRoutingModule,
-    FormsModule,
-    HttpClientModule,
-    ToastrModule.forRoot(),
-    ContractsModule,
-  ],
+  declarations: [AppComponent],
   providers: [
     CustomerService,
     { provide: CONFIG, useValue: config },
@@ -51,5 +31,15 @@ const config: Config = {
     },
   ],
   bootstrap: [AppComponent],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    ToastrModule.forRoot(),
+    ContractsModule,
+    CustomersModule,
+  ],
 })
 export class AppModule {}

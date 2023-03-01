@@ -9,10 +9,10 @@ import {
   SimpleChanges,
 } from "@angular/core";
 import { Customer, CustomerType } from "../model";
-import { MessageService } from "../message.service";
+import { MessageService } from "src/app/message.service";
 
 @Component({
-  selector: "app-customer-details",
+  selector: "cus-customer-details",
   templateUrl: "./customer-details.component.html",
   styles: [],
 })

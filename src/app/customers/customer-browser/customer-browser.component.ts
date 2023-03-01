@@ -3,10 +3,10 @@ import { Customer, CustomerType } from "../model";
 import { CustomerDetailsComponent } from "../customer-details/customer-details.component";
 import { CustomerService } from "../customer.service";
 import { Observable } from "rxjs";
-import { MessageService } from "../message.service";
+import { MessageService } from "src/app/message.service";
 
 @Component({
-  selector: "app-customer-browser",
+  selector: "cus-customer-browser",
   templateUrl: "./customer-browser.component.html",
   styles: [],
 })
