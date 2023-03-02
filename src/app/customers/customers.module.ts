@@ -1,21 +1,16 @@
 import { NgModule } from "@angular/core";
-import { CommonModule } from "@angular/common";
 import { CustomerAddComponent } from "./customer-add/customer-add.component";
 import { CustomerBrowserComponent } from "./customer-browser/customer-browser.component";
 import { CustomerDetailsComponent } from "./customer-details/customer-details.component";
-import { CapitalizePipe } from "./capitalize.pipe";
-import { HighlightDirective } from "./highlight.directive";
 import { CustomerService } from "./customer.service";
-import { FormsModule } from "@angular/forms";
+import { SharedModule } from "../shared/shared.module";
 
 @NgModule({
-  imports: [CommonModule, FormsModule],
+  imports: [SharedModule],
   declarations: [
     CustomerAddComponent,
     CustomerBrowserComponent,
     CustomerDetailsComponent,
-    CapitalizePipe,
-    HighlightDirective,
   ],
   providers: [CustomerService],
   exports: [CustomerAddComponent, CustomerBrowserComponent],

@@ -9,7 +9,7 @@ import {
   SimpleChanges,
 } from "@angular/core";
 import { Customer, CustomerType } from "../model";
-import { MessageService } from "src/app/message.service";
+import { MessageService } from "src/app/core/message.service";
 
 @Component({
   selector: "cus-customer-details",
