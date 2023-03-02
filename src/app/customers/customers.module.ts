@@ -4,9 +4,15 @@ import { CustomerBrowserComponent } from "./customer-browser/customer-browser.co
 import { CustomerDetailsComponent } from "./customer-details/customer-details.component";
 import { CustomerService } from "./customer.service";
 import { SharedModule } from "../shared/shared.module";
+import { RouterModule } from "@angular/router";
+
+const routes = [
+  { path: "customers", component: CustomerBrowserComponent },
+  { path: "customers/add", component: CustomerAddComponent },
+];
 
 @NgModule({
-  imports: [SharedModule],
+  imports: [SharedModule, RouterModule.forChild(routes)],
   declarations: [
     CustomerAddComponent,
     CustomerBrowserComponent,

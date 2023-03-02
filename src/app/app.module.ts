@@ -4,13 +4,18 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { FormsModule } from "@angular/forms";
-import { CustomerService } from "./customers/customer.service";
 import { ToastrModule } from "ngx-toastr";
-import { MessageService } from "./core/message.service";
 import { HttpClientModule } from "@angular/common/http";
 import { ContractsModule } from "./contracts/contracts.module";
 import { CustomersModule } from "./customers/customers.module";
 import { CoreModule } from "./core/core.module";
+import { RouterModule, Routes } from "@angular/router";
+import { NotfoundComponent } from "./core/notfound/notfound.component";
+
+const routes: Routes = [
+  { path: "", redirectTo: "customers", pathMatch: "full" },
+  { path: "**", component: NotfoundComponent },
+];
 
 @NgModule({
   declarations: [AppComponent],
@@ -25,6 +30,7 @@ import { CoreModule } from "./core/core.module";
     ToastrModule.forRoot(),
     ContractsModule,
     CustomersModule,
+    RouterModule.forRoot(routes),
   ],
 })
 export class AppModule {}

@@ -3,7 +3,9 @@ import { MessageService } from "./message.service";
 import { ErrorHandlingInterceptor } from "./error-handling.interceptor";
 import { HTTP_INTERCEPTORS } from "@angular/common/http";
 import { CONFIG, Config } from "../model";
-import { NavbarComponent } from './navbar/navbar.component';
+import { NavbarComponent } from "./navbar/navbar.component";
+import { RouterModule } from "@angular/router";
+import { NotfoundComponent } from './notfound/notfound.component';
 
 const config: Config = {
   customerLimit: 10,
@@ -11,6 +13,7 @@ const config: Config = {
 };
 
 @NgModule({
+  imports: [RouterModule],
   providers: [
     MessageService,
     ErrorHandlingInterceptor,
@@ -21,8 +24,7 @@ const config: Config = {
       multi: true,
     },
   ],
-  declarations: [
-    NavbarComponent
-  ],
+  declarations: [NavbarComponent, NotfoundComponent],
+  exports: [NavbarComponent],
 })
 export class CoreModule {}
