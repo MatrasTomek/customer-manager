@@ -1,0 +1,20 @@
+<div class="container panel-default">
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-sm-4">Nazwa Klienta</div>
+      <div class="col-sm-8">
+        {{ !contract ? "czekaj" : contract.customerName }}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-4">Data zawarcia</div>
+      <div class="col-sm-8">{{ !contract ? "czekaj" : contract.date }}</div>
+    </div>
+    <div class="row">
+      <div class="col-sm-4">Wartość</div>
+      <div class="col-sm-8">
+        {{ !contract ? "czekaj" : contract.value }} PLN
+      </div>
+    </div>
+  </div>
+</div>

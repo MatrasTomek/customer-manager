@@ -7,6 +7,7 @@
           <th appHighlight>Nazwa klienta</th>
           <th>Data zawarcia</th>
           <th>Kwota</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -14,6 +15,7 @@
           <td>{{ contract.customerName }}</td>
           <td>{{ contract.date | date : "dd-MM-yyyy" }}</td>
           <td>{{ contract.value }} PLN</td>
+          <td><a routerLink="{{ contract.id }}">Szcegóły</a></td>
         </tr>
       </tbody>
     </table>

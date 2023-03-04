@@ -15,4 +15,10 @@ export class ContractService {
   getCustomers() {
     return this.httpClinet.get<Contract[]>(`${this.config.apiUrl}/contracts`);
   }
+
+  getCustomer(id: number) {
+    return this.httpClinet.get<Contract>(
+      `${this.config.apiUrl}/contracts/${id}`
+    );
+  }
 }
