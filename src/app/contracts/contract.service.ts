@@ -12,11 +12,11 @@ export class ContractService {
     @Inject(CONFIG) private config: Config
   ) {}
 
-  getCustomers() {
+  getContracts() {
     return this.httpClinet.get<Contract[]>(`${this.config.apiUrl}/contracts`);
   }
 
-  getCustomer(id: number) {
+  getContract(id: number) {
     return this.httpClinet.get<Contract>(
       `${this.config.apiUrl}/contracts/${id}`
     );

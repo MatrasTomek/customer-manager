@@ -14,7 +14,7 @@ export class ContractListComponent implements OnInit {
 
   ngOnInit(): void {
     this.contractService
-      .getCustomers()
+      .getContracts()
       .subscribe((contracts) => (this.contracts = contracts));
   }
 }

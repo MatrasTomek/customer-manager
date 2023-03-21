@@ -9,7 +9,13 @@ import { Contract } from "../model";
   styles: [],
 })
 export class ContractDetailsComponent implements OnInit {
-  public contract!: Contract;
+  public contract: Contract = {
+    id: 0,
+    customerName: "",
+    customerId: 0,
+    value: 0,
+    date: 0,
+  };
 
   constructor(
     private contarcService: ContractService,
@@ -17,11 +23,8 @@ export class ContractDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe((params) => {
-      const id = parseInt(params["id"]);
-      this.contarcService.getCustomer(id).subscribe((contract) => {
-        this.contract = contract;
-      });
+    this.activatedRoute.data.subscribe((data) => {
+      this.contract = data["contract"];
     });
   }
 }

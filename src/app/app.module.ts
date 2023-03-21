@@ -6,13 +6,17 @@ import { AppComponent } from "./app.component";
 import { FormsModule } from "@angular/forms";
 import { ToastrModule } from "ngx-toastr";
 import { HttpClientModule } from "@angular/common/http";
-import { ContractsModule } from "./contracts/contracts.module";
 import { CustomersModule } from "./customers/customers.module";
 import { CoreModule } from "./core/core.module";
 import { RouterModule, Routes } from "@angular/router";
 import { NotfoundComponent } from "./core/notfound/notfound.component";
 
 const routes: Routes = [
+  {
+    path: "contracts",
+    loadChildren: () =>
+      import("./contracts/contracts.module").then((m) => m.ContractsModule),
+  },
   { path: "", redirectTo: "customers", pathMatch: "full" },
   { path: "**", component: NotfoundComponent },
 ];
@@ -28,7 +32,6 @@ const routes: Routes = [
     FormsModule,
     HttpClientModule,
     ToastrModule.forRoot(),
-    ContractsModule,
     CustomersModule,
     RouterModule.forRoot(routes),
   ],
